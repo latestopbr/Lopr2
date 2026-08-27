@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  --color-base: #0b0f19;
+  --color-surface: #111827;
+  --color-accent-indigo: #6366f1;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-pink: #ec4899;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: rgb(255 255 255 / 0.92);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-violet);
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-violet);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background-color: rgb(255 255 255 / 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .glass-strong {
+    background-color: rgb(17 24 39 / 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet), var(--color-accent-pink));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .bg-accent-gradient {
+    background-image: linear-gradient(135deg, var(--color-accent-indigo), var(--color-accent-violet), var(--color-accent-pink));
+  }
+
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px rgb(139 92 246 / 0.5),
+      0 0 24px 0 rgb(139 92 246 / 0.35);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.2) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #print-summary,
+  #print-summary * {
+    visibility: visible;
+  }
+
+  #print-summary {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 2rem;
+  }
+
+  #print-summary .print-gradient-text {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #4338ca;
+  }
+}
