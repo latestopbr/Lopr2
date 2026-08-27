@@ -12,12 +12,15 @@
 
 @layer base {
   html {
-    color-scheme: dark;
+    /* !important: beats an embedding host's own unlayered `:root`/`body` reset
+       (e.g. Claude Artifacts), which would otherwise always outrank anything
+       Tailwind emits inside `@layer`, regardless of source order. */
+    color-scheme: dark !important;
   }
 
   body {
-    background-color: var(--color-base);
-    color: rgb(255 255 255 / 0.92);
+    background-color: var(--color-base) !important;
+    color: rgb(255 255 255 / 0.92) !important;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }

@@ -23,7 +23,7 @@ export default function Scene3D() {
   const isTabVisible = useIsTabVisible()
 
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10">
+    <div className="pointer-events-none fixed inset-0 -z-10 bg-base">
       <Canvas
         dpr={[1, 1.5]}
         frameloop={isTabVisible ? 'always' : 'never'}
